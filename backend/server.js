@@ -7,7 +7,7 @@ const Config = require('./config.js')
 const tenentRoute = require('./routes/tenent.route')
 const userRoute = require('./routes/user.route')
 const verifyToken = require('./auth/verifyToken')
-
+mongoose.set('useFindAndModify', false);
 mongoose.connect(Config.MongoDB, { useNewUrlParser: true })
     .then(() =>
         console.log('Database is connected'),

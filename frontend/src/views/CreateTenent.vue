@@ -6,32 +6,31 @@
 </template>
 
 <script>
-import EditComponent from "../components/EditComponent"
-import tenentService from "../services/tenentService"
+import EditComponent from "../components/EditComponent";
+import tenentService from "../services/tenentService";
 
 export default {
   data() {
     return {
-      button:"Add",
+      button: "Add",
       tenent: {}
-    }
+    };
   },
   methods: {
     addTenent(tenent) {
-      tenentService.addTenent(tenent).then(() => {
-        this.$router.push({ name: "tenents" })
-      })
+      tenentService.addTenent(tenent)
+      .then(this.$router.push({ name: "tenents" }))
     }
   },
   components: {
     EditComponent
   }
-}
+};
 </script>
 
 <style>
 .header {
   text-align: center;
-  margin-top: 0.5em
+  margin-top: 0.5em;
 }
 </style>

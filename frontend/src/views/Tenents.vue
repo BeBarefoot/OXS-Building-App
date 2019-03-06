@@ -2,7 +2,7 @@
   <div>
     <h1 class="header">Manage Your Tenents</h1>
     <section class="row">
-      <search-component class="col-11" @filter="filterList"></search-component>
+      <search-component class="col-11" @filter="searchList"></search-component>
       <dropdown-component class="col-1" @filterView="filterView"></dropdown-component>
     </section>
     <div class="row">
@@ -40,7 +40,7 @@ export default {
         this.tenents.splice(index, 1)
       })
     },
-    filterList(text) {
+    searchList(text) {
       this.filter = false
       return (this.search = text)
     },

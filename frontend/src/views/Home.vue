@@ -19,16 +19,18 @@ export default {
   data() {
     return {
       userLoggedIn: false,
-      datenow: ""
+      datenow: "",
+      userName:''
     }
   },
   methods: {
     isLoggedIn(name) {
       this.userLoggedIn = true
       console.log(name, " Logged in at ", this.datenow)
+      this.userName=name
     },
-    isLoggedOut(name) {
-      console.log(name, " Logged out at ", this.datenow)
+    isLoggedOut() {
+      console.log(this.userName, " Logged out at ", this.datenow)
       this.userLoggedIn = false
     },
     time() {

@@ -22,13 +22,13 @@ User.pre('save', async function(next) {
     }
 })
 
-///////////////////////////////////////////////
-/////TODO - SETUP PASSWORD VALIDATION AS METHOD
-User.methods.isValidPassword = async function(password) {
+User.methods.isValidPassword = async function({ password }) {
     try {
-        return await bcrypt.compare(password, this.password)
+        const isValid = await bcrypt.compare(password, this.password)
+        return isValid
     } catch (err) {
-        next(err)
+        console.log("error");
+        next()
     }
 }
 

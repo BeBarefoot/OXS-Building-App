@@ -2,8 +2,8 @@
   <div>
     <h1 class="header">Manage Your Tenents</h1>
     <section class="row">
-      <search-component class="col-11" @filter="searchList"></search-component>
-      <dropdown-component class="col-1" @filterView="filterView"></dropdown-component>
+      <search-component class="col-11" @search="searchList"></search-component>
+      <dropdown-component :isSearching="isSearching" :options="dropdownOptions" class="col-1" @filterView="filterView"></dropdown-component>
     </section>
     <div class="row">
       <div class="col-md-10"></div>
@@ -25,7 +25,9 @@ export default {
     return {
       tenents: [],
       search: "All",
-      filter: "true"
+      filter: "true",
+      dropdownOptions: [{ value: "All" }, { value: "Has Debt" }, { value: "No Debt" }],
+      isSearching:false
     }
   },
   created() {
@@ -41,10 +43,12 @@ export default {
       })
     },
     searchList(text) {
+      this.isSearching=true
       this.filter = false
       return (this.search = text)
     },
     filterView(filter) {
+      this.isSearching=false
       this.filter = true
       this.search = filter
     }

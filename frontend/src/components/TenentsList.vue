@@ -9,7 +9,7 @@
           <th>Address</th>
           <th>Phone</th>
           <th>Debt</th>
-          <th>Actions</th>
+          <th></th>
         </tr>
       </mdb-tbl-head>
       <mdb-tbl-body>

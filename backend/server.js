@@ -8,7 +8,7 @@ const tenentRoute = require('./routes/tenent.route')
 const userRoute = require('./routes/user.route')
 const verifyToken = require('./auth/verifyToken')
 mongoose.set('useFindAndModify', false);
-mongoose.connect(Config.MongoDB, { useNewUrlParser: true })
+mongoose.connect(Config.MongoDB, Config.Parser)
     .then(() =>
         console.log('Database is connected'),
         err => console.log('Can not connect to the database' + err)

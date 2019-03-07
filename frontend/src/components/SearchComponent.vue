@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     searchName() {
-      this.$emit("filter", this.text)
+      this.$emit("search", this.text)
     }
   }
 };

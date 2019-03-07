@@ -29,7 +29,7 @@ export default {
         .loginUser({ email: this.email, password: this.password })
         .then(res => {
           tenentService.setToken(res.data.token)
-          this.$emit("loggedIn")
+          this.$emit("loggedIn", this.email)
           this.email = ""
           this.password = ""
         })

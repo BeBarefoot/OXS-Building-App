@@ -4,7 +4,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Name:</label>
-          <input type="text" class="form-control" v-model="tenent.name">
+          <input required type="text" class="form-control" v-model="tenent.name">
         </div>
       </div>
     </div>
@@ -12,7 +12,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Address:</label>
-          <input type="text" class="form-control" v-model="tenent.address">
+          <input required type="text" class="form-control" v-model="tenent.address">
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Phone:</label>
-          <input type="text" class="form-control" v-model="tenent.phone">
+          <input required type="tel" class="form-control" v-model="tenent.phone">
         </div>
       </div>
     </div>
@@ -30,14 +30,17 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Debt:</label>
-          <input type="text" class="form-control" v-model="tenent.debt">
+          <input required type="text" class="form-control" v-model="tenent.debt">
         </div>
       </div>
     </div>
     <br>
     <div class="form-group">
       <button type="text" class="btn btn-primary">{{button}}</button>
+      <router-link to="/"><button type="text" class="back-btn btn btn-primary">Back</button></router-link>
+
     </div>
+
   </form>
 </template>
 
@@ -53,5 +56,17 @@ export default {
 </script>
 
 
-<style>
+<style >
+.back-btn{
+  margin: 1em;
+  background: gray
+}
+.back-btn:hover{
+    background:rgb(58, 57, 57)
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 </style>

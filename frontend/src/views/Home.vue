@@ -23,12 +23,12 @@ export default {
     }
   },
   methods: {
-    isLoggedIn() {
+    isLoggedIn(name) {
       this.userLoggedIn = true
-      console.log("User Logged in at ", this.datenow)
+      console.log(name, " Logged in at ", this.datenow)
     },
-    isLoggedOut() {
-      console.log("User Logged out at ", this.datenow)
+    isLoggedOut(name) {
+      console.log(name, " Logged out at ", this.datenow)
       this.userLoggedIn = false
     },
     time() {

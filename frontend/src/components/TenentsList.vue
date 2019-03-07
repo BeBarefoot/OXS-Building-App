@@ -5,20 +5,21 @@
     <mdb-tbl responsive>
       <mdb-tbl-head>
         <tr>
-          <th>
-            <i @click="sort('Name')" class="fa fa-fw fa-sort"></i> Name
+          <th class="sortable" @click="sort('Name')">
+            <i class="fa fa-fw fa-sort"></i> Name
           </th>
           <th>Address</th>
           <th>Phone</th>
-          <th>
-            <i @click="sort('Debt')" class="fa fa-fw fa-sort"></i>
+          <th class="sortable" @click="sort('Debt')">
+            <i class="fa fa-fw fa-sort"></i>
             Debt
           </th>
+          <th></th>
           <th></th>
         </tr>
       </mdb-tbl-head>
       <mdb-tbl-body>
-        <tr v-for="(tenent,i) in filterTenents" :key="i" :class="{even:!(i%2)}">
+        <tr v-for="(tenent,i) in filterTenents" :key="i" :class="{even:!(i%2)}" class="highlight">
           <td>{{ tenent.name }}</td>
           <td>{{ tenent.address }}</td>
           <td>{{ tenent.phone }}</td>
@@ -101,7 +102,21 @@ export default {
 </script>
 
 <style>
+th {
+  background: #333;
+  color: whitesmoke;
+  font-weight: 400
+}
+.sortable:hover {
+  cursor: pointer;
+}
 .even {
   background: rgb(202, 193, 193);
+}
+.highlight:hover {
+  text-shadow: 0 0 0.9px #333, 0 0 0.9px #333;
+}
+.highlight {
+  transition: text-shadow 0.2s;
 }
 </style>

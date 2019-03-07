@@ -18,8 +18,9 @@ export default {
   },
   methods: {
     addTenent(tenent) {
-      tenentService.addTenent(tenent)
-      .then(this.$router.push({ name: "tenents" }))
+      tenentService
+        .addTenent(tenent)
+        .then(this.$router.push({ name: "tenents" }));
     }
   },
   components: {

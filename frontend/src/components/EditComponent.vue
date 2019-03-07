@@ -57,6 +57,7 @@ export default {
 
 
 <style >
+
 .back-btn{
   margin: 1em;
   background: gray

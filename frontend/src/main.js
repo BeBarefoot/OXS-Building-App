@@ -17,6 +17,7 @@ Vue.config.productionTip = false;
 import CreateTenent from './views/CreateTenent.vue';
 import Tenents from './views/Tenents.vue';
 import UpdateTenent from './views/UpdateTenent.vue';
+import ShowTenent from './views/ShowTenent.vue';
 
 const routes = [{
         name: 'create',
@@ -32,6 +33,11 @@ const routes = [{
         name: 'edit',
         path: '/edit/:id',
         component: UpdateTenent
+    },
+    {
+        name: 'show',
+        path: '/show/:id',
+        component: ShowTenent
     }
 ];
 

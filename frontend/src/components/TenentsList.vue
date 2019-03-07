@@ -19,18 +19,32 @@
         </tr>
       </mdb-tbl-head>
       <mdb-tbl-body>
-        <tr v-for="(tenent,i) in filterTenents" :key="i" :class="{even:!(i%2)}" class="highlight">
+        <tr
+          v-for="(tenent,i) in filterTenents"
+          :key="i"
+          :class="{even:!(i%2)}"
+          class="highlight"
+          @click="showTenent(tenent._id)"
+        >
           <td>{{ tenent.name }}</td>
           <td>{{ tenent.address }}</td>
           <td>{{ tenent.phone }}</td>
           <td>{{ tenent.debt }}</td>
           <td>
-            <router-link :to="{name: 'edit', params: { id: tenent._id }}">
+            <router-link
+              @click.native="$event.stopImmediatePropagation()"
+              :to="{name: 'edit', params: { id: tenent._id }}"
+            >
               <mdb-btn outline="primary" darkWaves rounded>Edit</mdb-btn>
             </router-link>
           </td>
           <td>
-            <mdb-btn outline="danger" darkWaves rounded @click="openModal(tenent._id)">Delete</mdb-btn>
+            <mdb-btn
+              outline="danger"
+              darkWaves
+              rounded
+              @click.native="openModal(tenent._id), $event.stopImmediatePropagation()"
+            >Delete</mdb-btn>
           </td>
         </tr>
       </mdb-tbl-body>
@@ -80,6 +94,9 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    showTenent(id) {
+    this.$router.push({name: 'show', params: { id }})
     }
   },
   computed: {
@@ -105,7 +122,7 @@ export default {
 th {
   background: #333;
   color: whitesmoke;
-  font-weight: 400
+  font-weight: 400;
 }
 .sortable:hover {
   cursor: pointer;
@@ -114,6 +131,7 @@ th {
   background: rgb(202, 193, 193);
 }
 .highlight:hover {
+  cursor: pointer;
   text-shadow: 0 0 0.9px #333, 0 0 0.9px #333;
 }
 .highlight {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Home from "@/views/Home.vue"
+import Home from "@/views/Home.vue";
 
 export default {
   components: {
@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style>
-
+body {
+  text-align: center;
+}
 </style>

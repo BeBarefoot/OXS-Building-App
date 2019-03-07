@@ -34,7 +34,7 @@ export default {
       this.userLoggedIn = false
     },
     time() {
-      this.datenow = moment().format("LTS")
+      this.datenow = moment().format("HH : mm : ss")
       setTimeout(this.time, 1000)
     }
   },

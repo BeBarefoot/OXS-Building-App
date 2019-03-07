@@ -5,10 +5,15 @@
     <mdb-tbl responsive>
       <mdb-tbl-head>
         <tr>
-          <th>Name</th>
+          <th>
+            <i @click="sort('Name')" class="fa fa-fw fa-sort"></i> Name
+          </th>
           <th>Address</th>
           <th>Phone</th>
-          <th>Debt</th>
+          <th>
+            <i @click="sort('Debt')" class="fa fa-fw fa-sort"></i>
+            Debt
+          </th>
           <th></th>
         </tr>
       </mdb-tbl-head>
@@ -33,9 +38,9 @@
 </template>
 
 <script>
-import { mdbBtn, mdbTbl, mdbTblHead, mdbTblBody } from "mdbvue"
-import Modal from "@/components/ModalComponent.vue"
-import tenentService from "../services/tenentService"
+import { mdbBtn, mdbTbl, mdbTblHead, mdbTblBody } from "mdbvue";
+import Modal from "@/components/ModalComponent.vue";
+import tenentService from "../services/tenentService";
 
 export default {
   props: ["tenents", "search", "filter"],
@@ -43,31 +48,46 @@ export default {
     return {
       showModal: false,
       isActive: false,
-      tenentId: ""
-    }
+      tenentId: "",
+      sortText: "Up",
+      sortDirection: "true"
+    };
   },
   methods: {
+    sort(array) {
+      this.tenents.sort((a, b) => {
+        if (array === "Debt")
+          return this.sortDirection ? a.debt - b.debt : b.debt - a.debt;
+        else
+          return this.sortDirection
+            ? a.name.localeCompare(b.name)
+            : b.name.localeCompare(a.name);
+      });
+      this.sortDirection = !this.sortDirection;
+    },
     deletePost() {
-      this.closeModal()
-      this.$emit("deleteTenent", this.tenentId)
-      this.tenentId = ""
+      this.closeModal();
+      this.$emit("deleteTenent", this.tenentId);
+      this.tenentId = "";
     },
     pageClick() {
-      this.isActive = true
+      this.isActive = true;
     },
     openModal(id) {
-      this.showModal = true
-      this.tenentId = id
+      this.showModal = true;
+      this.tenentId = id;
     },
     closeModal() {
-      this.showModal = false
-    },
-    submitAndClose() {}
+      this.showModal = false;
+    }
   },
   computed: {
     filterTenents() {
-      return tenentService.filterTenents(this.filter, this.search, this.tenents)
-     
+      return tenentService.filterTenents(
+        this.filter,
+        this.search,
+        this.tenents
+      );
     }
   },
   components: {
@@ -77,7 +97,7 @@ export default {
     mdbTblBody,
     Modal
   }
-}
+};
 </script>
 
 <style>
